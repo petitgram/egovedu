@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="sa1" 
+		  class="com.spring.Sawon"
+		  p:sabun="100"
+		  p:name="홍길동"
+		  p:dept="영업부" />
+	<!--  com.spring.Sawon sa1= new com.spring.Sawon();
+			  sa1.setSabun(Integer.parseInt("100"));
+			  sa1.setName("홍길동");
+			  sa1.setDept("영업부");
+	 -->	  
+	<bean id="sa2" class="com.spring.Sawon">
+		<constructor-arg>
+			<value>101</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>심청이</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>개발부</value>
+		</constructor-arg>
+	</bean>
+	<!--   com.spring.Sawon sa2 = new com.spring.Sawon(Integer.parseInt("100"), "심청이","개발부"); -->
+	
+	<bean id="sc" class="com.spring.SawonConfig" init-method="print">
+		<property name="list">
+			<list>
+				<ref bean="sa1" />
+				<!-- list.add(sa1) -->
+				<ref bean="sa2" />
+				<!-- list.add(sa1) -->
+			</list>
+		</property>
+	</bean>
+	<!--  com.spring.SawonConfig sc= new com.spring.SawonConfig();
+			 List list=new ArrayList();
+			 list.add(sa1);
+			 list.add(sa2);
+			 sc.setList(list);
+			 sc.print();
+	  -->
+	
+	
+	<!-- 
+		<property name="map">
+			<map>
+				<entry key="a" value="aaa"/>
+				<entry key="a" ref="abc"/>
+				value = 일반 변수 대입
+				ref = 객체 주소값
+			</map>
+			map.put("a","aaa");
+		</property>
+	-->
+	
+</beans>
