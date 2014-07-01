@@ -18,7 +18,7 @@ public class UsersDAOImpl implements UsersDAOIF {
 		PreparedStatement pstmt = null;
 		int row = 0;
 		
-		String sql = "INSERT INTO users(name,password,name,role)"
+		String sql = "INSERT INTO users(id,password,name,role)"
 				+ "VALUES (?,?,?,?)";
 		
 		//DBConnection 
@@ -72,18 +72,16 @@ public class UsersDAOImpl implements UsersDAOIF {
 		}finally{
 			try {
 				db.close(pstmt, conn);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} catch (SQLException e) { 
 				e.printStackTrace();
 			}
 		}   
 		
 		return row;
 	}
-
+ 
 	@Override
-	public int remove(Users user) {
-
+	public int detele(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int row = -1;
@@ -93,7 +91,7 @@ public class UsersDAOImpl implements UsersDAOIF {
 		try{
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql); 
-			pstmt.setString(1,user.getId());
+			pstmt.setString(1,id);
 			
 			row = pstmt.executeUpdate(); 
 		}catch(Exception e){
@@ -107,12 +105,6 @@ public class UsersDAOImpl implements UsersDAOIF {
 			}
 		}  
 		return row;
-	}
-
-	@Override
-	public int detele(String id) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
@@ -163,7 +155,8 @@ public class UsersDAOImpl implements UsersDAOIF {
 		boolean isExist=false;
 		
 		String sql = "SELECT id,password,name,role FROM users "
-				+ "where id=?";
+				+ "where id=? and password=?";
+		//System.out.println(sql);
 		DBUtil db=DBUtil.getInstance();
 		
 		try{
@@ -189,7 +182,7 @@ public class UsersDAOImpl implements UsersDAOIF {
 			}
 		}  
 		
-		return false;
+		return isExist;
 	}
 
 	@Override
@@ -227,7 +220,7 @@ public class UsersDAOImpl implements UsersDAOIF {
 			}
 		}  
 		
-		return null;
+		return userList;
 	}
 
 }

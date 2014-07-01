@@ -34,15 +34,22 @@ public class UsersServiceImpl implements UsersServiceIF {
 	public Users findUser(String id) throws Exception {
 		Users user = userDAO.findUser(id);
 		if(user == null) throw new Exception("findUser FAIL " + id);   
-		return null;
+		return user;
 	}
 
+	@Override
+	public boolean login(String id,String password) throws Exception { 
+		boolean login = userDAO.login(id, password); 
+		if(login == false) throw new Exception("Login FAIL " + id);   
+		return login;
+	}
+	
 	@Override
 	public ArrayList<Users> findUserList() throws Exception {
 		ArrayList<Users> userList = new ArrayList<Users>();
 		userList = userDAO.findUserList();
 		if(userList.isEmpty()) throw new Exception("findUserList FAIL ");   
-		return null;
+		return userList;
 	}
 
 }

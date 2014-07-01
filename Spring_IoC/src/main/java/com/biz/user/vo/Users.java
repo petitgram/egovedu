@@ -50,10 +50,10 @@ public class Users {
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("id == ").append(id);
-		sb.append("password == ").append(password);
-		sb.append("name == ").append(name);
-		sb.append("role == ").append(role);
+		sb.append("id :: ").append(id).append(", ");
+		sb.append("password :: ").append(password).append(", ");
+		sb.append("name :: ").append(name).append(", ");
+		sb.append("role :: ").append(role).append("\n");
 		
 		return sb.toString();
 	} 
