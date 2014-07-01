@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
 
-public class ORADBUtil {
+public class DBUtil {
 
 	private final static String DRIVER="oracle.jdbc.driver.OracleDriver";
 	private final static String URL="jdbc:oracle:thin:@localhost:1521:xe"; 
@@ -14,9 +14,9 @@ public class ORADBUtil {
 	private final static String PASSWORD="tiger";
 
 
-	private static ORADBUtil instance; 
+	private static DBUtil instance; 
 	
-	private ORADBUtil(){ 
+	private DBUtil(){ 
 		try{
 			Class.forName(DRIVER);
 		}catch(Exception e){
@@ -24,13 +24,13 @@ public class ORADBUtil {
 		}
 	}
 	
-	public static ORADBUtil getInstance(){
-		if(instance == null ) instance = new ORADBUtil();
+	public static DBUtil getInstance(){
+		if(instance == null ) instance = new DBUtil();
 		
 		return instance;
 	}
 	
-	public static Connection getConnection(){ 
+	public Connection getConnection(){ 
 		Connection conn=null; 
 		try{
 			conn = DriverManager.getConnection(URL, USER,PASSWORD);
@@ -42,7 +42,7 @@ public class ORADBUtil {
 		return conn;
 	}
 	
-	public static void close(ResultSet result,Statement stmt,Connection conn){ 
+	public void close(ResultSet result,Statement stmt,Connection conn){ 
 		try{
 			if(result!=null) result.close();
 			if(stmt!=null) stmt.close();
@@ -52,7 +52,7 @@ public class ORADBUtil {
 		}
 	}
 	
-	public static void close(Statement stmt,Connection conn) throws SQLException{ 
+	public void close(Statement stmt,Connection conn) throws SQLException{ 
 		
 		try{
 			if(stmt!=null) stmt.close();

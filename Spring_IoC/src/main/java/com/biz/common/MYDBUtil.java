@@ -30,7 +30,7 @@ public class MYDBUtil {
 		return instance;
 	}
 	
-	public static Connection getConnection(){ 
+	public Connection getConnection(){ 
 		Connection conn=null; 
 		try{
 			conn = DriverManager.getConnection(URL, USER,PASSWORD);
@@ -42,7 +42,7 @@ public class MYDBUtil {
 		return conn;
 	}
 	
-	public static void close(ResultSet result,Statement stmt,Connection conn){ 
+	public void close(ResultSet result,Statement stmt,Connection conn){ 
 		try{
 			if(result!=null) result.close();
 			if(stmt!=null) stmt.close();
@@ -52,7 +52,7 @@ public class MYDBUtil {
 		}
 	}
 	
-	public static void close(Statement stmt,Connection conn) throws SQLException{ 
+	public void close(Statement stmt,Connection conn) throws SQLException{ 
 		
 		try{
 			if(stmt!=null) stmt.close();

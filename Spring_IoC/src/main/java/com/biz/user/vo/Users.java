@@ -9,6 +9,14 @@ public class Users {
 	private String role;
 	
 	
+	public Users(String id, String password, String name, String role) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+	}
+	
 	public String getId() {
 		return id;
 	}
