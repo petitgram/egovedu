@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.biz.common.DBUtil;
 import com.biz.user.vo.Users;
 
+@Repository("userDAO")
 public class UsersDAOImpl implements UsersDAOIF {
 
 	@Override
