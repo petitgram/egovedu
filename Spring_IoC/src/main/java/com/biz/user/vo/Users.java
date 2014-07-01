@@ -9,6 +9,11 @@ public class Users {
 	private String role;
 	
 	
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Users(String id, String password, String name, String role) {
 		super();
 		this.id = id;

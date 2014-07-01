@@ -18,7 +18,7 @@ public class UsersDAOImpl implements UsersDAOIF {
 		PreparedStatement pstmt = null;
 		int row = 0;
 		
-		String sql = "INSERT INTO user(name,password,name,role)"
+		String sql = "INSERT INTO users(name,password,name,role)"
 				+ "VALUES (?,?,?,?)";
 		
 		//DBConnection 
@@ -142,21 +142,91 @@ public class UsersDAOImpl implements UsersDAOIF {
 			
 		}catch(Exception e){
 			e.printStackTrace();
-		}
-		
-		
-		return null;
+		}finally{
+			try {
+				db.close(pstmt, conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}  
+		 
+		return user;
 	}
 
 	@Override
 	public boolean login(String id, String password) {
-		// TODO Auto-generated method stub
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		boolean isExist=false;
+		
+		String sql = "SELECT id,password,name,role FROM users "
+				+ "where id=?";
+		DBUtil db=DBUtil.getInstance();
+		
+		try{
+		conn= db.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, password);
+		
+		result = pstmt.executeQuery();
+		
+		if(result.next()){
+			 isExist=true;
+		}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				db.close(pstmt, conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}  
+		
 		return false;
 	}
 
 	@Override
 	public ArrayList<Users> findUserList() {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		ArrayList<Users> userList = new ArrayList<Users>();
+		
+		String sql = "SELECT id,password,name,role FROM users ";
+		
+		DBUtil db=DBUtil.getInstance();
+		
+		try{
+		conn= db.getConnection();
+		pstmt = conn.prepareStatement(sql); 
+		
+		result = pstmt.executeQuery();
+		
+		while(result.next()){
+			userList.add(new Users(result.getString(1),
+						   result.getString(2),
+						   result.getString(3),
+						   result.getString(4)));
+		}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				db.close(pstmt, conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}  
+		
 		return null;
 	}
 
