@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+ 
+<sqlMapConfig> 
+	<!-- 
+	<properties resource="examples/sqlmap/maps/SqlMapConfigExample.properties " />
+	 -->
+	  
+	<settings
+	cacheModelsEnabled="true"
+	enhancementEnabled="true"
+	lazyLoadingEnabled="true"
+	maxRequests="32"
+	maxSessions="10"
+	maxTransactions="5"
+	useStatementNamespaces="false"
+	/>
+	 
+	<transactionManager type="JDBC" >
+		<dataSource type="SIMPLE">
+		<!-- 
+			<property name="JDBC.Driver" value="com.mysql.jdbc.Driver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://127.0.0.1:3306/egov"/>
+			<property name="JDBC.Username" value="egov"/>
+			<property name="JDBC.Password" value="egov"/>
+			
+		 --> 
+			<property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+			<property name="JDBC.Username" value="scott"/>
+			<property name="JDBC.Password" value="tiger"/>
+			
+			<property name="JDBC.DefaultAutoCommit" value="true" />
+			<property name="Pool.MaximumActiveConnections" value="10"/>
+			<property name="Pool.MaximumIdleConnections" value="5"/>
+			<property name="Pool.MaximumCheckoutTime" value="120000"/>
+			<property name="Pool.TimeToWait" value="500"/>
+			<property name="Pool.PingQuery" value="select 1 from ACCOUNT"/>
+			<property name="Pool.PingEnabled" value="false"/>
+			<property name="Pool.PingConnectionsOlderThan" value="1"/>
+			<property name="Pool.PingConnectionsNotUsedFor" value="1"/>
+		</dataSource>
+	</transactionManager>
+	 
+	<sqlMap resource="dbConfig/users.xml" />
+	
+</sqlMapConfig>

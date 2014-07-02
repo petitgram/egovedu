@@ -14,7 +14,7 @@ public class UserIOCLogin {
 		UsersServiceIF service = (UsersServiceIF) context.getBean("usersService");
 		
 		try {
-			System.out.println(service.login("spring", "spring11"));
+			System.out.println(service.login("test", "test123"));
 		} catch (Exception e) { 
 			e.printStackTrace();
 		}
