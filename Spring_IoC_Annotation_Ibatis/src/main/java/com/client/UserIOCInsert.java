@@ -15,7 +15,7 @@ public class UserIOCInsert {
 		UsersServiceIF service = (UsersServiceIF) context.getBean("usersService");
 		
 		try {
-			service.addUser(new Users("spring92","spring11","SPRING11","user"));
+			service.addUser(new Users("spring23","spring11","SPRING11","user"));
 		} catch (Exception e) { 
 			e.printStackTrace();
 		}

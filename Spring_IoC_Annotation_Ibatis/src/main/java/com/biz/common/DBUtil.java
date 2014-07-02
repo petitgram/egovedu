@@ -2,8 +2,7 @@ package com.biz.common;
 
 import java.io.Reader;
 
-import org.apache.ibatis.io.Resources;
-
+import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
