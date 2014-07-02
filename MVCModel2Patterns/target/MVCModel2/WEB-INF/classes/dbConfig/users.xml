@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-
+2.dtd">
+<sqlMap namespace="users"> 
+	
+	<typeAlias alias="Users" type="com.biz.user.vo.Users" />
+	 
+	<resultMap id="userMap" class="Users">
+		<result property="id" column="id"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="role" column="role"/>
+	</resultMap> 
+	
+	<select id="findUser" parameterClass="String" resultMap="userMap">
+		select id,password,name,role from users where id = #id#
+	</select> 
+	
+	<select id="findUserList" resultMap="userMap">
+		select id,password,name,role from users
+	</select> 
+	 
+	<update id="insert" parameterClass="Users"> 
+		insert into users (id,password,name,role) 
+		values (#id#,#password#,#name#,#role#)
+	</update> 
+	
+	<update id="update" parameterClass="Users"> 
+		update users set password=#password#, 
+					  	 name=#name#, 
+						 role=#role# 
+				WHERE id = #id#
+	</update> 
+	
+	<delete id="delete" parameterClass="String"> 
+		delete from users WHERE id = #id#
+	</delete> 
+	
+	<select id="login" parameterClass="java.util.HashMap" resultClass="String"> 
+		select id from users WHERE id = #id# and password = #password#
+	</select>
+</sqlMap>
