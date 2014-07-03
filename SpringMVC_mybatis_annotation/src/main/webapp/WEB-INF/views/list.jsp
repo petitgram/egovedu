@@ -1,6 +1,8 @@
 <%@ include file="include/header.jsp" %>
 
-<div class="container">
+
+ 
+    <div class="container">
 
       <div class="starter-template">
         <h1>사용자 목록 </h1> 
