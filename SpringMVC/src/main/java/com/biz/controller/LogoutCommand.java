@@ -18,9 +18,12 @@ public class LogoutCommand implements Controller{
 			HttpServletResponse resopnse) throws Exception { 
 		
 		ModelAndView nextPage=new ModelAndView();
-		HttpSession session=request.getSession(false); 
-		session.invalidate();  
+		HttpSession session=request.getSession(false);  
 		
+		if(session != null && session.getAttribute("id") !=null){
+			session.invalidate();  
+		}
+		 
 		nextPage.addObject("message","LogOut Success");
 		
 		nextPage.setViewName("result");

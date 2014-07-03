@@ -52,11 +52,11 @@
 	<script>
     $( document ).ready(function() { 
 	    $("#btn_input").click(function() { 
-	    	location.href="input.do";
+	    	window.location.href="input.do";
 	    });    
 
 	    $("#btn_logout").click(function() { 
-	    	location.href="logout.do";
+	    	window.location.href="logout.do";
 	    });   
 	       
     });

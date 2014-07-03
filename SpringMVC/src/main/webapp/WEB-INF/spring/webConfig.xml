@@ -8,6 +8,7 @@
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
+				<prop key="home.do">home</prop>
 				<prop key="login.do">login</prop>
 				<prop key="logout.do">logout</prop>
 				<prop key="view.do">view</prop>
@@ -19,7 +20,8 @@
 			</props>
 		</property>
 	</bean>
-
+	
+	<bean id="home" class="com.biz.controller.HomeCommand" ></bean> 
 	<bean id="login" class="com.biz.controller.LoginCommand" ></bean>
 	<bean id="logout" class="com.biz.controller.LogoutCommand"></bean>
 	<bean id="view" class="com.biz.controller.ViewCommand"></bean>
