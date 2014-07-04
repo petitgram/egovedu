@@ -6,8 +6,8 @@ CREATE TABLE USERS(
 	NAME VARCHAR2(20),
 	ROLE VARCHAR2(5)
 );
-INSERT INTO USERS VALUES('test', 'test123', '°ü¸®ÀÚ', 'Admin');
-INSERT INTO USERS VALUES('abc', 'abc123', '¹æ¹®ÀÚ', 'User');
+INSERT INTO USERS VALUES('test', 'test123', 'ï¿½ï¿½ï¿½ï¿½', 'Admin');
+INSERT INTO USERS VALUES('abc', 'abc123', 'ï¿½æ¹®ï¿½ï¿½', 'User');
 
 
 CREATE TABLE BOARD(
@@ -18,6 +18,6 @@ CREATE TABLE BOARD(
 	REGDATE DATE DEFAULT SYSDATE,
 	CNT NUMBER(5) DEFAULT 0
 );
-INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) VALUES(1, 'Ã³À½ ¿Ã¸®´Â ±Û', '°ü¸®ÀÚ', 'Àß ºÎÅ¹µå¸³´Ï´Ù.');
+INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) VALUES(1, 'Ã³ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ ï¿½ï¿½Å¹ï¿½å¸³ï¿½Ï´ï¿½.');
 
 COMMIT;
